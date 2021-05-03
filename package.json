@@ -10,6 +10,9 @@
     "client": "cd my-app && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "engines": {
+    "node": "12.14.1"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

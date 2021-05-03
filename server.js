@@ -50,7 +50,12 @@ app.post('/', (req, res) => {
   }
 })
 
-app.set('port', process.env.PORT || port);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+app.set('port', process.env.PORT || port);
