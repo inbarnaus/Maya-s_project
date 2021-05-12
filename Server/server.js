@@ -7,7 +7,7 @@ app.use(express.json());
 var {User} = require('./mongoose')
 var {Project} = require('./mongoose')
 var bcrypt = require('bcrypt')
-
+app.use(express.static('public'))
 app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: true
