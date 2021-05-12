@@ -6,15 +6,14 @@ var mongoose = require('mongoose'),
 mongoose.connect("mongodb+srv://admin:12345@cluster0.ayoh6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
-    useFindAndModify: false 
+    useFindAndModify: false,
+    useCreateIndex: true
 })
 .then(async ()=>{
     console.log("db is connected"); 
-})
-
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
+}).catch(err => {
+    console.log(Error, err.message);
+  })
 
 const UserSchema = new Schema({
     fname: {
@@ -33,39 +32,28 @@ const UserSchema = new Schema({
 })
 
 const ProjectSchema = new Schema({
-    parking_area: {
-        type: Number
-    },
-    mmd_area: {
-        type: Number
-    },
-    cost: {
-        type: Number
-    },
-    field_area:{
-        type: Number
-    },
-    floors: {
-        type: Number
-    },
-    windows: {
-        type: Number
-    },
-    doors: {
-        type: Number
-    },
-    parking: {
-        type: Boolean
-    },
-    mmd: {
-        type: Boolean
-    },
-    startDate: {
-        type: String
-    },
-    endDate: {
-        type: String
-    }
+    tot_days: Number,
+    cost: Number,
+    winter: String,
+    dis_tractor_days: Number,
+    dis_bagi_days: Number,
+    dis_track: Number,
+    dis_track_days: Number,
+    dis_workers: Number,
+    dis_workers_days: Number,
+    dig_digers: Number,
+    dig_digers_days: Number,
+    basement: String,
+    dig_track: Number,
+    dig_track_days: Number,
+    dig_tractor: Number,
+    dig_tractor_days: Number,
+    pou_iron: Number,
+    pou_iron_days: Number,
+    pou_workers: Number,
+    pou_workers_days: Number,
+    pou_workers_days: Number,
+    pou_workers_days: Number
 })
 
 UserSchema.pre('save', function(next) {
@@ -90,4 +78,7 @@ UserSchema.pre('save', function(next) {
 
 const User = mongoose.model('User', UserSchema);
 const Project = mongoose.model('Project', ProjectSchema)
-module.exports = User, Project ;
+module.exports = {
+    User: User, 
+    Project: Project
+} ;
