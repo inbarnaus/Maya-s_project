@@ -68,8 +68,8 @@ app.post('/form2', (req, res)=>{
         const total_days = req.body.dis_track_days + req.body.dis_tractor_days + req.body.dis_workers_days +
                             req.body.dis_bagi_days + req.body.dig_digers_days + req.body.dig_track_days + 
                             req.body.dig_tractor_days + req.body.pou_iron_days + req.body.pou_workers_days;
-        if(req.body.basement === 'true')
-          total_days += 10
+        // if(req.body.basement === 'true')
+        //   total_days = total_days + 10
         res.send({days: total_days, cost: cost})
       }
     })
